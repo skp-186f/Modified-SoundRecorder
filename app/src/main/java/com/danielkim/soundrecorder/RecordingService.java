@@ -11,7 +11,6 @@ import android.media.MediaRecorder;
 import android.os.Environment;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
-import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -121,9 +120,15 @@ public class RecordingService extends Service {
     }
 
     public void stopRecording() {
-        mRecorder.stop();
-        mElapsedMillis = (System.currentTimeMillis() - mStartingTimeMillis);
-        mRecorder.release();
+
+        try {
+            mRecorder.stop();
+            mElapsedMillis = (System.currentTimeMillis() - mStartingTimeMillis);
+            mRecorder.release();
+        } catch (Exception e) {
+            Log.i(LOG_TAG, e.getMessage());
+        }
+
         Toast.makeText(this, getString(R.string.toast_recording_finish) + " " + mFilePath, Toast.LENGTH_LONG).show();
 
         //remove notification
@@ -142,6 +147,7 @@ public class RecordingService extends Service {
         }
     }
 
+    /**
     private void startTimer() {
         mTimer = new Timer();
         mIncrementTimerTask = new TimerTask() {
@@ -156,8 +162,9 @@ public class RecordingService extends Service {
         };
         mTimer.scheduleAtFixedRate(mIncrementTimerTask, 1000, 1000);
     }
-
+    */
     //TODO:
+    /**
     private Notification createNotification() {
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(getApplicationContext())
@@ -170,5 +177,5 @@ public class RecordingService extends Service {
                 new Intent[]{new Intent(getApplicationContext(), MainActivity.class)}, 0));
 
         return mBuilder.build();
-    }
+    }*/
 }
