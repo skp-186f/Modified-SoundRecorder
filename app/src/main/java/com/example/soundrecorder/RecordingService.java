@@ -1,20 +1,16 @@
-package com.danielkim.soundrecorder;
+package com.example.soundrecorder;
 
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.Service;
-import android.content.Context;
+import android.content.ContentValues;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.media.MediaRecorder;
 import android.os.Environment;
 import android.os.IBinder;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.danielkim.soundrecorder.activities.MainActivity;
+import com.example.soundrecorder.data.dbContract.RecordingEntry;
 
 import java.io.File;
 import java.io.IOException;
@@ -107,11 +103,19 @@ public class RecordingService extends Service {
         int count = 0;
         File f;
 
+        String[] projection = new String[] {
+                RecordingEntry._ID
+        };
+
+        Cursor cursor = getContentResolver().query(RecordingEntry.CONTENT_URI, projection, null, null, null);
+
+        int dbSize = cursor.getCount();
+
         do{
             count++;
 
             mFileName = getString(R.string.default_file_name)
-                    + "_" + (mDatabase.getCount() + count) + ".mp4";
+                    + "_" + (dbSize + count) + ".mp4";
             mFilePath = Environment.getExternalStorageDirectory().getAbsolutePath();
             mFilePath += "/SoundRecorder/" + mFileName;
 
@@ -140,7 +144,15 @@ public class RecordingService extends Service {
         mRecorder = null;
 
         try {
-            mDatabase.addRecording(mFileName, mFilePath, mElapsedMillis);
+
+            ContentValues values = new ContentValues();
+            values.put(RecordingEntry.COLUMN_RECORDING_NAME, mFileName);
+            values.put(RecordingEntry.COLUMN_RECORDING_FILE_PATH, mFilePath);
+            values.put(RecordingEntry.COLUMN_RECORDING_LENGTH, mElapsedMillis);
+            values.put(RecordingEntry.COLUMN_TIME_ADDED, System.currentTimeMillis());
+
+            getContentResolver().insert(RecordingEntry.CONTENT_URI, values);
+
 
         } catch (Exception e){
             Log.e(LOG_TAG, "exception", e);

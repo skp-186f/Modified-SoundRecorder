@@ -41,7 +41,7 @@ MERGED from com.android.support:support-v4:21.0.3:16:5
 		ADDED from AndroidManifest.xml:10:9
 	android:theme
 		ADDED from AndroidManifest.xml:12:9
-activity#com.danielkim.soundrecorder.activities.MainActivity
+activity#com.example.me.soundrecorder.activities.MainActivity
 ADDED from AndroidManifest.xml:13:9
 	android:screenOrientation
 		ADDED from AndroidManifest.xml:15:13
@@ -59,7 +59,7 @@ category#android.intent.category.LAUNCHER
 ADDED from AndroidManifest.xml:20:17
 	android:name
 		ADDED from AndroidManifest.xml:20:27
-service#com.danielkim.soundrecorder.RecordingService
+service#com.example.me.soundrecorder.RecordingService
 ADDED from AndroidManifest.xml:23:9
 	android:name
 		ADDED from AndroidManifest.xml:23:18

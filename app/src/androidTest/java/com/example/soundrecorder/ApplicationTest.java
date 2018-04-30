@@ -1,4 +1,4 @@
-package com.danielkim.soundrecorder;
+package com.example.me.soundrecorder;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

@@ -1,4 +1,4 @@
-package com.danielkim.soundrecorder;
+package com.example.soundrecorder;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 
-import com.danielkim.soundrecorder.listeners.OnDatabaseChangedListener;
+import com.example.soundrecorder.listeners.OnDatabaseChangedListener;
 
 import java.util.Comparator;
 

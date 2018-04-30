@@ -41,7 +41,8 @@
                     android:text="file_name"
                     android:textSize="15sp"
                     android:fontFamily="sans-serif-condensed"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    android:textColor="@color/primary_text"/>
 
                 <TextView
                     android:id="@+id/file_length_text"
@@ -50,7 +51,8 @@
                     android:text="00:00"
                     android:textSize="12sp"
                     android:fontFamily="sans-serif-condensed"
-                    android:layout_marginTop="7dp"/>
+                    android:layout_marginTop="7dp"
+                    android:textColor="@color/secondary_text"/>
 
                 <TextView
                     android:id="@+id/file_date_added_text"
@@ -58,7 +60,8 @@
                     android:layout_height="wrap_content"
                     android:text="mmm dd yyyy - hh:mm a"
                     android:textSize="12sp"
-                    android:fontFamily="sans-serif-condensed"/>
+                    android:fontFamily="sans-serif-condensed"
+                    android:textColor="@color/secondary_text"/>
             </LinearLayout>
 
         </LinearLayout>

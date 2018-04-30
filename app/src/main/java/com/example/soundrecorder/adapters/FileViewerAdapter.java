@@ -1,4 +1,4 @@
-package com.danielkim.soundrecorder.adapters;
+package com.example.soundrecorder.adapters;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -19,14 +19,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.text.format.DateUtils;
 
-import com.danielkim.soundrecorder.DBHelper;
-import com.danielkim.soundrecorder.R;
-import com.danielkim.soundrecorder.RecordingItem;
-import com.danielkim.soundrecorder.fragments.PlaybackFragment;
-import com.danielkim.soundrecorder.listeners.OnDatabaseChangedListener;
+import com.example.soundrecorder.DBHelper;
+import com.example.soundrecorder.R;
+import com.example.soundrecorder.fragments.PlaybackFragment;
+import com.example.soundrecorder.listeners.OnDatabaseChangedListener;
+import com.example.soundrecorder.RecordingItem;
 
 import java.io.File;
-import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 import java.util.ArrayList;
 
@@ -34,7 +33,7 @@ import java.util.ArrayList;
  * Created by Daniel on 12/29/2014.
  */
 public class FileViewerAdapter extends RecyclerView.Adapter<FileViewerAdapter.RecordingsViewHolder>
-    implements OnDatabaseChangedListener{
+    implements OnDatabaseChangedListener {
 
     private static final String LOG_TAG = "FileViewerAdapter";
 
@@ -225,8 +224,8 @@ public class FileViewerAdapter extends RecyclerView.Adapter<FileViewerAdapter.Re
             //file name is unique, rename file
             File oldFilePath = new File(getItem(position).getFilePath());
             oldFilePath.renameTo(f);
-            mDatabase.renameItem(getItem(position), name, mFilePath);
-            notifyItemChanged(position);
+            //mDatabase.renameItem(getItem(position), name, mFilePath);
+            //notifyItemChanged(position);
         }
     }
 
